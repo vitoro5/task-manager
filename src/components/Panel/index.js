@@ -2,8 +2,8 @@ import React from "react";
 
 import { Container } from "./styles";
 
-function Panel({ content }) {
-  return <Container>{content}</Container>;
+function Panel(props) {
+  return <Container>{props.children}</Container>;
 }
 
 export default Panel;
