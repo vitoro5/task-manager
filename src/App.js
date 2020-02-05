@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { Creators as Actions } from "./store/ducks/tasks";
 
+import Panel from "./components/Panel";
+import Tasks from "./components/Tasks";
+import Button from "./components/Button";
+
 import {
   Container,
   OuterContainer,
@@ -14,13 +18,15 @@ import {
   LevelRight
 } from "./styles";
 
-import { Checklist as ChecklistIcon, Delete as DeleteIcon } from "./icons";
-
 import "./global.css";
 
-import Panel from "./components/Panel";
-import Tasks from "./components/Tasks";
-import Button from "./components/Button";
+import { ReactComponent as Checklist } from "./icons/checklist.svg";
+import { ReactComponent as Delete } from "./icons/delete.svg";
+
+const STATUS = {
+  FOCUSED: "focused",
+  NORMAL: "normal"
+};
 
 function App() {
   const tasks = useSelector(({ tasks }) => tasks.data);
@@ -28,21 +34,8 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const [checklistFill, setChecklistFill] = useState("#dbdbdb");
-  const [deleteFill, setDeleteFill] = useState("#ff3660");
-
-  const iconsColor = {
-    inputIconColor: {
-      FOCUSED: "#4a4a4a",
-      NORMAL: "#dbdbdb"
-    },
-    butttonIconColor: {
-      HOVERED: "#ffffff",
-      NORMAL: "#ff3660"
-    }
-  };
-
   const [task, setTask] = useState({ value: "", completed: false });
+  const [className, setClassName] = useState(STATUS.NORMAL);
 
   const handleSubmitTask = e => {
     e.preventDefault();
@@ -55,9 +48,9 @@ function App() {
     const filteredTasks = tasks.filter(task => task.completed === filter);
 
     if (filter === "all" && tasks.length !== 0) {
-      return <Panel content={<Tasks filter={filter} />} />;
+      return <Panel>{<Tasks filter={filter} />}</Panel>;
     } else if (filteredTasks.length !== 0 && tasks.length !== 0) {
-      return <Panel content={<Tasks filter={filter} />} />;
+      return <Panel>{<Tasks filter={filter} />}</Panel>;
     }
   };
 
@@ -66,19 +59,11 @@ function App() {
   };
 
   const handleFocus = () => {
-    setChecklistFill(iconsColor.inputIconColor.FOCUSED);
+    setClassName(STATUS.FOCUSED);
   };
 
   const handleBlur = () => {
-    setChecklistFill(iconsColor.inputIconColor.NORMAL);
-  };
-
-  const handleMouseEnter = () => {
-    setDeleteFill(iconsColor.butttonIconColor.HOVERED);
-  };
-
-  const handleMouseLeave = () => {
-    setDeleteFill(iconsColor.butttonIconColor.NORMAL);
+    setClassName(STATUS.NORMAL);
   };
 
   const handleClickFullWidthButton = () => {
@@ -101,7 +86,7 @@ function App() {
               onChange={e => setTask({ ...task, value: e.target.value })}
             />
             <span>
-              <ChecklistIcon width="20" height="20" fill={checklistFill} />
+              <Checklist width="22" height="22" className={className} />
             </span>
           </InputControl>
         </Panel>
@@ -139,13 +124,8 @@ function App() {
           </Level>
         </Panel>
         <Panel>
-          <Button
-            fullwidth={true}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleClickFullWidthButton}
-          >
-            <DeleteIcon width="20" height="20" fill={deleteFill} />
+          <Button fullwidth={true} onClick={handleClickFullWidthButton}>
+            <Delete width="20" height="20" />
             Clear
           </Button>
         </Panel>

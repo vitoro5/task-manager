@@ -16,7 +16,6 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "svgr": "svgr -d src/icons/ assets/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
@@ -40,7 +39,6 @@
     ]
   },
   "devDependencies": {
-    "@svgr/cli": "^5.0.1",
     "react-test-renderer": "^16.12.0"
   }
 }

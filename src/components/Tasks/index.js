@@ -5,7 +5,8 @@ import { Creators } from "../../store/ducks/tasks";
 
 import { Container } from "./styles";
 
-import { Circle as UncheckedIcon, CheckMark as CheckedIcon } from "../../icons";
+import { ReactComponent as Unchecked } from "../../icons/circle.svg";
+import { ReactComponent as Checked } from "../../icons/check-mark.svg";
 
 function Tasks({ filter }) {
   const tasks = useSelector(({ tasks }) => tasks.data);
@@ -21,8 +22,8 @@ function Tasks({ filter }) {
         {tasks.map((task, i) => (
           <li key={i}>
             <button onClick={() => handleClick(task)}>
-              {!task.completed && <UncheckedIcon width="12" height="12" />}
-              {task.completed && <CheckedIcon width="12" height="12" />}
+              {!task.completed && <Unchecked width="12" height="12" />}
+              {task.completed && <Checked width="12" height="12" />}
               <p>{task.value}</p>
             </button>
           </li>
@@ -37,8 +38,8 @@ function Tasks({ filter }) {
           .map((task, i) => (
             <li key={i}>
               <button onClick={() => handleClick(task)}>
-                {!task.completed && <UncheckedIcon width="12" height="12" />}
-                {task.completed && <CheckedIcon width="12" height="12" />}
+                {!task.completed && <Unchecked width="12" height="12" />}
+                {task.completed && <Checked width="12" height="12" />}
                 <p>{task.value}</p>
               </button>
             </li>

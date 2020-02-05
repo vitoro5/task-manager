@@ -51,6 +51,12 @@ export const InputControl = styled.form`
     z-index: 4;
     display: inline-flex;
     align-items: center;
+    color: #dbdbdb;
+
+    .focused {
+      transition: all 0.2s ease-in-out;
+      color: #363636;
+    }
   }
 `;
 

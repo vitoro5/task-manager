@@ -16,6 +16,10 @@ export const Container = styled.ul`
       font-family: "Mali", cursive;
       cursor: pointer;
 
+      svg {
+        color: #dbdbdb;
+      }
+
       p {
         margin-left: 10px;
       }
