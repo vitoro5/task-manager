@@ -124,7 +124,11 @@ function App() {
           </Level>
         </Panel>
         <Panel>
-          <Button fullwidth={true} onClick={handleClickFullWidthButton}>
+          <Button
+            onClick={handleClickFullWidthButton}
+            color="#ff3660"
+            fullwidth={true}
+          >
             <Delete width="20" height="20" />
             Clear
           </Button>

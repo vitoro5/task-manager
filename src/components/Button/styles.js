@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const FullWidthButton = styled.button`
   width: 100%;
   border-radius: 5px;
-  border: 1px solid #ff3660;
+  border: 1px solid ${props => props.color};
   background: #ffffff;
-  color: #ff3660;
+  color: ${props => props.color};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@ export const FullWidthButton = styled.button`
 
   :hover {
     color: #ffffff;
-    background: #ff3660;
+    background: ${props => props.color};
   }
 
   svg {
@@ -31,9 +31,9 @@ export const CommonButton = styled.button`
   border: 1px solid ${props => (props.active ? "#363636" : "#dbdbdb")};
   color: ${props => (props.active ? "#ffffff" : "#363636")};
   font-family: "Mali", cursive;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
   padding: 5px;
+  transition: all 0.3s ease-in-out;
 
   :first-child {
     border-top-left-radius: 2px;
