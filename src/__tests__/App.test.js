@@ -40,7 +40,7 @@ describe("<App /> unit test", () => {
   it("should highlight the input icon on focus", () => {
     const wrapper = getWrapper();
 
-    let input = wrapper.find("input").toJSON();
+    let input = wrapper.find("input");
     expect(input).toMatchSnapshot();
   });
 });
