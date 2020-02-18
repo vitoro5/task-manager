@@ -5,6 +5,7 @@ import { createStore } from "redux";
 
 import App from "../App";
 import reducer from "../store/ducks";
+import { Creators as Actions } from "../store/ducks/tasks";
 
 describe("<App /> unit test", () => {
   const initialState = {
@@ -14,9 +15,7 @@ describe("<App /> unit test", () => {
     }
   };
 
-  const mockStore = createStore(reducer, initialState);
-
-  const getWrapper = () =>
+  const getWrapper = (mockStore = createStore(reducer, initialState)) =>
     mount(
       <Provider store={mockStore}>
         <App />
@@ -37,10 +36,52 @@ describe("<App /> unit test", () => {
     expect(wrapper.exists("ul")).toBeTruthy();
   });
 
-  it("should highlight the input icon on focus", () => {
+  it("should highlight input icon on focus", () => {
     const wrapper = getWrapper();
 
-    let input = wrapper.find("input");
-    expect(input).toMatchSnapshot();
+    expect(wrapper.find("form").find("svg")).toMatchSnapshot();
+    wrapper.find("input").simulate("focus");
+    expect(wrapper.find("form").find("svg")).toMatchSnapshot();
+    wrapper.find("input").simulate("blur");
+    expect(wrapper.find("form").find("svg")).toMatchSnapshot();
+  });
+
+  it("should highlight button when active", () => {
+    const wrapper = getWrapper();
+
+    let buttonsPanel = wrapper.find("div.fTfHBq").at(1);
+    let activeButton = buttonsPanel.find({ active: true });
+
+    expect(activeButton).toHaveStyleRule("color", "#ffffff");
+    expect(activeButton).toHaveStyleRule("background", "#363636");
+  });
+
+  it("should change the filter on button click", () => {
+    const mockStore = createStore(reducer, initialState);
+    mockStore.dispatch = jest.fn();
+
+    const wrapper = getWrapper(mockStore);
+    let buttonsPanel = wrapper.find("div.fTfHBq").at(1);
+    let allFilterSetButton = buttonsPanel.find("button").at(0);
+    let aciveFilterSetButton = buttonsPanel.find("button").at(1);
+    let completedFilterSetButton = buttonsPanel.find("button").at(2);
+
+    allFilterSetButton.simulate("click");
+    expect(mockStore.dispatch).toHaveBeenCalledWith(Actions.setFilter("all"));
+    aciveFilterSetButton.simulate("click");
+    expect(mockStore.dispatch).toHaveBeenCalledWith(Actions.setFilter(false));
+    completedFilterSetButton.simulate("click");
+    expect(mockStore.dispatch).toHaveBeenCalledWith(Actions.setFilter(true));
+  });
+
+  it("should clear all tasks on full width button click", () => {
+    const mockStore = createStore(reducer, initialState);
+    mockStore.dispatch = jest.fn();
+
+    const wrapper = getWrapper(mockStore);
+
+    let fullwidthButton = wrapper.find({ fullwidth: true }).first();
+    fullwidthButton.simulate("click");
+    expect(mockStore.dispatch).toHaveBeenCalledWith(Actions.clearTasks());
   });
 });
