@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tasks /> unit test should renders when filter is not setted to all 1`] = `
+.c0 {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 li button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #363636;
+  border: none;
+  background: transparent;
+  font-family: "Mali",cursive;
+  cursor: pointer;
+}
+
+.c0 li button svg {
+  color: #dbdbdb;
+}
+
+.c0 li button p {
+  margin-left: 10px;
+}
+
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Tasks>
+    <styled.ul>
+      <ul
+        className="c0"
+      />
+    </styled.ul>
+  </Tasks>
+</Provider>
+`;
+
+exports[`<Tasks /> unit test should renders when filter is setted to all 1`] = `
+.c0 {
+  list-style: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 li button {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #363636;
+  border: none;
+  background: transparent;
+  font-family: "Mali",cursive;
+  cursor: pointer;
+}
+
+.c0 li button svg {
+  color: #dbdbdb;
+}
+
+.c0 li button p {
+  margin-left: 10px;
+}
+
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Tasks>
+    <styled.ul>
+      <ul
+        className="c0"
+      >
+        <li
+          key="0"
+        >
+          <button
+            onClick={[Function]}
+          >
+            <ForwardRef(SvgCircle)
+              height="12"
+              width="12"
+            >
+              <svg
+                height="12"
+                width="12"
+              >
+                circle.svg
+              </svg>
+            </ForwardRef(SvgCircle)>
+            <p>
+              testing1
+            </p>
+          </button>
+        </li>
+        <li
+          key="1"
+        >
+          <button
+            onClick={[Function]}
+          >
+            <ForwardRef(SvgCircle)
+              height="12"
+              width="12"
+            >
+              <svg
+                height="12"
+                width="12"
+              >
+                circle.svg
+              </svg>
+            </ForwardRef(SvgCircle)>
+            <p>
+              testing2
+            </p>
+          </button>
+        </li>
+      </ul>
+    </styled.ul>
+  </Tasks>
+</Provider>
+`;

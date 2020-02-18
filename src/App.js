@@ -48,9 +48,9 @@ function App() {
     const filteredTasks = tasks.filter(task => task.completed === filter);
 
     if (filter === "all" && tasks.length !== 0) {
-      return <Panel>{<Tasks filter={filter} />}</Panel>;
+      return <Panel>{<Tasks />}</Panel>;
     } else if (filteredTasks.length !== 0 && tasks.length !== 0) {
-      return <Panel>{<Tasks filter={filter} />}</Panel>;
+      return <Panel>{<Tasks />}</Panel>;
     }
   };
 

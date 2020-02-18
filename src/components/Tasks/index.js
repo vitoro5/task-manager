@@ -8,8 +8,10 @@ import { Container } from "./styles";
 import { ReactComponent as Unchecked } from "../../icons/circle.svg";
 import { ReactComponent as Checked } from "../../icons/check-mark.svg";
 
-function Tasks({ filter }) {
+function Tasks() {
   const tasks = useSelector(({ tasks }) => tasks.data);
+  const filter = useSelector(({ tasks }) => tasks.filter);
+
   const dispatch = useDispatch();
 
   const handleClick = task => {
